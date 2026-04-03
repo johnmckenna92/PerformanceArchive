@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PerformanceArchive — Evidence Over Hype</title>
 <meta name="description" content="Independent, evidence-based guides on supplements, nutrition, fitness, and performance. No sponsors. No agenda. United Kingdom.">
+<meta name="p:domain_verify" content="c248027e8f253ff43c3b2483938c451b"/>
 <link rel="icon" type="image/png" href="Logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,8 @@ nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(30px);-webkit-ba
 .ni{max-width:1200px;margin:0 auto;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between}
 .nl{font-family:var(--fb);font-weight:800;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text);text-decoration:none}.nl span{color:var(--gold)}
 .nk{display:flex;gap:2.5rem;list-style:none}.nk a{color:var(--text3);text-decoration:none;font-size:.67rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;transition:color .4s}.nk a:hover{color:var(--gold)}
-.nm{display:none;background:none;border:none;cursor:pointer;padding:.5rem}.nm span{display:block;width:22px;height:1.5px;background:var(--gold);margin:5px 0;transition:all .3s}
+.nm{display:none;background:none;border:none;cursor:pointer;padding:.5rem}.nm span{display:block;width:22px;height:1.5px;background:var(--gold);margin:5px 0;transition:all .3s;transform-origin:center}
+.nm.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.nm.active span:nth-child(2){opacity:0;transform:scaleX(0)}.nm.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:7rem 2rem 3rem}
@@ -165,7 +167,7 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 </head>
 <body>
 
-<nav id="mainNav"><div class="ni"><a href="#" class="nl">Performance<span>Archive</span></a><button class="nm" aria-label="Menu" onclick="document.querySelector('.nk').classList.toggle('open')"><span></span><span></span><span></span></button><ul class="nk"><li><a href="#about" onclick="this.closest('.nk').classList.remove('open')">About</a></li><li><a href="#guides" onclick="this.closest('.nk').classList.remove('open')">Guides</a></li><li><a href="#updates" onclick="this.closest('.nk').classList.remove('open')">Updates</a></li><li><a href="#shop" onclick="this.closest('.nk').classList.remove('open')">Shop</a></li></ul></div></nav>
+<nav id="mainNav"><div class="ni"><a href="#" class="nl">Performance<span>Archive</span></a><button class="nm" aria-label="Menu" onclick="this.classList.toggle('active');document.querySelector('.nk').classList.toggle('open')"><span></span><span></span><span></span></button><ul class="nk"><li><a href="#about" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">About</a></li><li><a href="#guides" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">Guides</a></li></ul></div></nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -228,9 +230,8 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 <h2 class="sh r rup d1">The Collection</h2>
 <p class="sp r rup d2">Every guide is independently researched, references NHS and EFSA positions where relevant, and is written without influence from any brand or sponsor.</p>
 <div class="gg" id="etsy-grid">
-<!-- Loading state -->
-<div class="gc r vis" style="text-align:center;grid-column:1/-1;padding:4rem 2rem">
-<p style="color:var(--text2);font-size:.9rem">Loading listings from the shop…</p>
+<div style="grid-column:1/-1;text-align:center;padding:4rem 2rem">
+<p style="color:var(--text2);font-size:.9rem">Loading from shop…</p>
 </div>
 </div>
 </div>
@@ -247,42 +248,9 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 <!-- BANNER IMAGE -->
 <div class="banner-strip r rs"><img src="Banner.png" alt="PerformanceArchive Banner"></div>
 
-<div class="gl" data-gl></div>
-
-<!-- UPDATES -->
-<section id="updates">
-<div class="si">
-<div class="sl r rup">Updates</div>
-<h2 class="sh r rup d1">What's New</h2>
-<p class="sp r rup d2">The latest from PerformanceArchive. New guides, research updates, and things worth knowing.</p>
-<div class="ul">
-<div class="ui r rl d1"><span class="ud">April 2026</span><span class="ut">Hype Check is live</span><span class="utg">New Guide</span></div>
-<div class="ui r rl d2"><span class="ud">March 2026</span><span class="ut">Legacy Strength Protocol launched</span><span class="utg">New Guide</span></div>
-<div class="ui r rl d3"><span class="ud">March 2026</span><span class="ut">Menopause Strength Protocol now available</span><span class="utg">New Guide</span></div>
-<div class="ui r rl d4"><span class="ud">February 2026</span><span class="ut">What's Really in Your Food published</span><span class="utg">New Guide</span></div>
-<div class="ui r rl d5"><span class="ud">January 2026</span><span class="ut">Your Pace, Your Way released</span><span class="utg">New Guide</span></div>
-<div class="uph r rup d6">Future updates go here. Delete this once you have more entries.</div>
-</div>
-</div>
-</section>
-
-<div class="gl" data-gl></div>
-
-<!-- SHOP -->
-<section id="shop">
-<div class="si">
-<div class="sl r rup">Shop</div>
-<h2 class="sh r rup d1">Get the Guides</h2>
-<p class="sp r rup d2">All guides available individually or as bundles. Digital download, instant access.</p>
-<div class="sc r rs d3">
-<div><h3>Browse the Full Collection</h3><p>Every guide, every bundle, all in one place. Head to the shop to see what's available and grab what you need.</p></div>
-<a href="https://www.etsy.com/shop/PerformanceArchive" class="bg" target="_blank" rel="noopener">Visit the Shop <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
-</div>
-</div>
-</section>
 
 <footer>
-<div class="fi"><div><div class="fb2">Performance<span>Archive</span></div><p class="ftg">Evidence over hype. Always.</p></div><div class="fl"><a href="#about">About</a><a href="#guides">Guides</a><a href="#updates">Updates</a><a href="#shop">Shop</a></div></div>
+<div class="fi"><div><div class="fb2">Performance<span>Archive</span></div><p class="ftg">Evidence over hype. Always.</p></div><div class="fl"><a href="#about">About</a><a href="#guides">Guides</a><a href="https://www.etsy.com/shop/PerformanceArchive" target="_blank" rel="noopener">Shop</a></div></div>
 <div class="fbot"><span>&copy; 2026 PerformanceArchive. All rights reserved. United Kingdom.</span><span>No sponsors. No affiliates. Independent.</span></div>
 </footer>
 
