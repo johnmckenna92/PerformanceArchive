@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PerformanceArchive — Evidence Over Hype</title>
-<meta name="description" content="Independent, evidence-based guides on supplements, nutrition, fitness, performance, and lifestyle. No sponsors. No agenda. United Kingdom.">
+<meta name="description" content="Independent, evidence-based guides on supplements, nutrition, fitness, and performance. No sponsors. No agenda. United Kingdom.">
 <meta name="p:domain_verify" content="c248027e8f253ff43c3b2483938c451b"/>
 <link rel="icon" type="image/png" href="Logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,30 +127,27 @@ section{padding:8rem 2.5rem;position:relative}.si{max-width:1100px;margin:0 auto
 .ci .cn{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:var(--gold);line-height:1}
 .ci .cl{font-size:.72rem;font-weight:500;color:var(--text2);margin-top:.4rem}
 
-/* UPDATES */
-#updates{background:var(--bg2)}
-.ul{margin-top:3rem}
-.ui{display:grid;grid-template-columns:120px 1fr auto;gap:2rem;align-items:baseline;padding:1.75rem 0;border-bottom:1px solid var(--bdr);position:relative;transition:all .4s;cursor:default}
-.ui:first-child{border-top:1px solid var(--bdr)}
-.ui::before{content:'';position:absolute;left:0;top:50%;width:0;height:1px;background:var(--gold);transition:width .5s}
-.ui:hover{padding-left:2rem}.ui:hover::before{width:8px}
-.ud{font-size:.72rem;font-weight:500;color:var(--text3);letter-spacing:.05em;white-space:nowrap}
-.ut{font-family:var(--fd);font-size:1.15rem;font-weight:600;color:var(--text);line-height:1.3}
-.utg{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
-.uph{padding:1.5rem;border:1px dashed var(--bdr2);color:var(--text3);font-size:.82rem;font-style:italic;text-align:center;margin-top:1.5rem}
-
-/* SHOP */
-#shop{background:var(--bg)}
-.sc{background:linear-gradient(145deg,var(--card) 0%,var(--bg2) 100%);border:1px solid var(--bdr);padding:4rem;display:flex;align-items:center;justify-content:space-between;gap:3rem;margin-top:3rem;position:relative;overflow:hidden;transition:all .5s}
-.sc::before{content:'';position:absolute;top:-50%;right:-10%;width:350px;height:350px;background:radial-gradient(circle,rgba(201,168,76,.04),transparent 65%);pointer-events:none}
-.sc:hover{border-color:var(--bdr2);transform:translateY(-2px)}
-.sc h3{font-family:var(--fd);font-size:2rem;font-weight:700;color:var(--text);margin-bottom:.6rem}
-.sc p{font-size:.95rem;font-weight:300;color:var(--text2);max-width:460px;line-height:1.8}
-
 /* BANNER IMAGE */
 .banner-strip{width:100%;overflow:hidden;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
 .banner-strip img{width:100%;display:block;opacity:.85;transition:opacity .5s}
 .banner-strip:hover img{opacity:1}
+
+/* CONTACT */
+.contact-strip{padding:5rem 2.5rem;background:var(--bg2);border-top:1px solid var(--bdr);text-align:center}
+.contact-inner{max-width:600px;margin:0 auto}
+.contact-strip .sl{margin-bottom:.6rem}
+.contact-strip h2{font-family:var(--fd);font-size:clamp(2rem,4.5vw,3rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.contact-strip h2 em{color:var(--gold);font-style:italic}
+.contact-strip p{font-size:.92rem;font-weight:300;color:var(--text2);line-height:1.9;margin-bottom:2rem}
+.contact-email{display:inline-flex;align-items:center;gap:.8rem;padding:1rem 2.2rem;background:var(--card);border:1px solid var(--bdr2);text-decoration:none;transition:all .4s}
+.contact-email:hover{border-color:var(--gold-d);background:var(--card-h);transform:translateY(-2px)}
+.contact-email svg{width:18px;height:18px;color:var(--gold);flex-shrink:0}
+.contact-email span{font-size:.78rem;font-weight:600;letter-spacing:.1em;color:var(--text);text-transform:uppercase}
+.social-row{display:flex;gap:1.2rem;justify-content:center;margin-top:2rem}
+.social-link{width:42px;height:42px;border:1px solid var(--bdr2);display:flex;align-items:center;justify-content:center;transition:all .4s;text-decoration:none}
+.social-link:hover{border-color:var(--gold-d);background:rgba(201,168,76,.06);transform:translateY(-2px)}
+.social-link svg{width:16px;height:16px;color:var(--text2);transition:color .3s}
+.social-link:hover svg{color:var(--gold)}
 
 /* FOOTER */
 footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(--bg)}
@@ -161,8 +158,8 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 .fbot{max-width:1100px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;font-size:.65rem;color:var(--text3)}
 
 /* RESPONSIVE */
-@media(max-width:900px){.ab-grid{grid-template-columns:1fr;gap:2.5rem}.gg{grid-template-columns:1fr 1fr}.sc{flex-direction:column;padding:3rem 2rem;text-align:center}.sc p{margin:0 auto}.ui{grid-template-columns:1fr;gap:.2rem}.cr{grid-template-columns:1fr 1fr;gap:1.5rem}.sb{min-height:280px}.sb-gold{display:none}.sb.vis .sb-l{transform:none}.sb.vis .sb-r{transform:none}.golden-row{grid-template-columns:1fr 1fr;gap:.8rem}}
-@media(max-width:650px){.nk{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,10,.97);flex-direction:column;padding:1.5rem 2.5rem;gap:1.2rem;border-bottom:1px solid var(--bdr)}.nk.open{display:flex}.nm{display:block}.gg{grid-template-columns:1fr}.hero{padding:6rem 1.5rem 2rem}section{padding:5rem 1.5rem}.fi{flex-direction:column}.fbot{flex-direction:column;gap:.3rem}.sc{padding:2.5rem 1.5rem}.cr{grid-template-columns:1fr 1fr}.ci .cn{font-size:2.5rem}.h-ctas{flex-direction:column;align-items:center}.mt span{font-size:1.2rem}.golden-row{grid-template-columns:1fr 1fr;gap:.6rem}.golden-sq{padding:1.2rem .8rem}.golden-sq h4{font-size:.88rem}.sb{min-height:240px}.h-pre .ln{display:none}.h-pre{letter-spacing:.25em;font-size:.55rem}}
+@media(max-width:900px){.ab-grid{grid-template-columns:1fr;gap:2.5rem}.gg{grid-template-columns:1fr 1fr}.cr{grid-template-columns:1fr 1fr;gap:1.5rem}.sb{min-height:280px}.sb-gold{display:none}.sb.vis .sb-l{transform:none}.sb.vis .sb-r{transform:none}.golden-row{grid-template-columns:1fr 1fr;gap:.8rem}}
+@media(max-width:650px){.nk{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,10,.97);flex-direction:column;padding:1.5rem 2.5rem;gap:1.2rem;border-bottom:1px solid var(--bdr)}.nk.open{display:flex}.nm{display:block}.gg{grid-template-columns:1fr}.hero{padding:6rem 1.5rem 2rem}section{padding:5rem 1.5rem}.fi{flex-direction:column}.fbot{flex-direction:column;gap:.3rem}.cr{grid-template-columns:1fr 1fr}.ci .cn{font-size:2.5rem}.h-ctas{flex-direction:column;align-items:center}.mt span{font-size:1.2rem}.golden-row{grid-template-columns:1fr 1fr;gap:.6rem}.golden-sq{padding:1.2rem .8rem}.golden-sq h4{font-size:.88rem}.sb{min-height:240px}.h-pre .ln{display:none}.h-pre{letter-spacing:.25em;font-size:.55rem}.contact-strip{padding:4rem 1.5rem}.contact-email{padding:.9rem 1.5rem}.contact-email span{font-size:.7rem;letter-spacing:.06em}}
 </style>
 </head>
 <body>
@@ -176,7 +173,7 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 <div class="h-logo"><img src="Logo.png" alt="PerformanceArchive" onerror="this.parentElement.style.display='none'"></div>
 <div class="h-pre"><span class="ln"></span> Est. 2026 &middot; United Kingdom <span class="ln"></span></div>
 <h1><span class="w"><span>Evidence</span></span> <span class="w"><span>Over</span></span><br><span class="w"><span><em>Hype</em></span></span></h1>
-<p class="h-sub">Independent, research-based guides on supplements, nutrition, fitness, performance, and lifestyle. No sponsors. No affiliate links. No agenda.</p>
+<p class="h-sub">Independent, research-based guides on supplements, nutrition, fitness, and performance. No sponsors. No affiliate links. No agenda.</p>
 <div class="h-ctas">
 <a href="#guides" class="bg">Explore the Guides <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
 <a href="#about" class="bo">The Story <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></a>
@@ -248,6 +245,26 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 <!-- BANNER IMAGE -->
 <div class="banner-strip r rs"><img src="Banner.png" alt="PerformanceArchive Banner"></div>
 
+<!-- CONTACT -->
+<div class="contact-strip">
+<div class="contact-inner">
+<div class="sl r rup">Get in Touch</div>
+<h2 class="r rup d1">Questions? <em>Suggestions?</em></h2>
+<p class="r rup d2">Whether it's a question about a guide, a product you want reviewed, or just to say hello — the inbox is always open.</p>
+<a href="mailto:hello@performancearchive.co.uk" class="contact-email r rup d3">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+<span>hello@performancearchive.co.uk</span>
+</a>
+<div class="social-row r rup d4">
+<a href="https://www.pinterest.co.uk/PerformanceArchive/" target="_blank" rel="noopener" class="social-link" aria-label="Pinterest">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+</a>
+<a href="https://www.etsy.com/shop/PerformanceArchive" target="_blank" rel="noopener" class="social-link" aria-label="Etsy">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.559 3.074c0-.254.17-.396.453-.396h4.311c2.396 0 3.467 1.65 3.891 3.646l.113.453h.736L17.8 2h-.68l-.453.566c-.17.198-.34.227-.594.227H5.746c-.453 0-.566-.113-.566-.566V2h-.793L2.717 8.07h.736l.226-.566C4.389 5.243 5.376 3.9 7.26 3.9h.538c.453 0 .538.113.538.453v15.83c0 1.273-.283 1.584-1.98 1.811l-.736.085V22.9h8.452v-.82l-.736-.085c-1.697-.227-1.98-.538-1.98-1.811V3.074h-.001zm12.484 7.78c-.17-.792-.396-1.019-1.075-1.019H16.33v.82l.538.057c.538.057.651.283.651.651v7.497c0 .368-.113.594-.651.651l-.538.057v.82h4.424c2.094 0 2.66-1.075 3.411-3.694h-.736c-.538 1.358-1.075 2.15-2.15 2.15h-1.075c-.453 0-.538-.17-.538-.538v-7.384c0-.368.085-.538.538-.538h1.075c.906 0 1.245.538 1.556 2.037h.764l-.001-1.566z"/></svg>
+</a>
+</div>
+</div>
+</div>
 
 <footer>
 <div class="fi"><div><div class="fb2">Performance<span>Archive</span></div><p class="ftg">Evidence over hype. Always.</p></div><div class="fl"><a href="#about">About</a><a href="#guides">Guides</a><a href="https://www.etsy.com/shop/PerformanceArchive" target="_blank" rel="noopener">Shop</a></div></div>
