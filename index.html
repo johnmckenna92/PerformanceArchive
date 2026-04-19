@@ -40,6 +40,10 @@ nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(30px);-webkit-ba
 .ni{max-width:1200px;margin:0 auto;padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between}
 .nl{font-family:var(--fb);font-weight:800;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text);text-decoration:none}.nl span{color:var(--gold)}
 .nk{display:flex;gap:2.5rem;list-style:none}.nk a{color:var(--text3);text-decoration:none;font-size:.67rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;transition:color .4s}.nk a:hover{color:var(--gold)}
+.nk a.nk-free{color:var(--text2);display:inline-flex;align-items:center;gap:.55rem;position:relative}
+.nk a.nk-free::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 0 rgba(201,168,76,.5);animation:freeDot 2.8s ease-in-out infinite}
+.nk a.nk-free:hover{color:var(--gold)}
+@keyframes freeDot{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.5);opacity:1}50%{box-shadow:0 0 0 6px rgba(201,168,76,0);opacity:.7}}
 .nm{display:none;background:none;border:none;cursor:pointer;padding:.5rem}.nm span{display:block;width:22px;height:1.5px;background:var(--gold);margin:5px 0;transition:all .3s;transform-origin:center}
 .nm.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.nm.active span:nth-child(2){opacity:0;transform:scaleX(0)}.nm.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
@@ -75,7 +79,7 @@ nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(30px);-webkit-ba
 /* BUTTONS */
 .bg{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2.2rem;background:var(--gold);color:var(--bg);text-decoration:none;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:all .4s;border:none;cursor:pointer}
 .bg:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 10px 40px rgba(201,168,76,.2)}
-.bo{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2.2rem;background:transparent;color:var(--gold);text-decoration:none;font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--gold-d);transition:all .4s}
+.bo{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2.2rem;background:transparent;color:var(--gold);text-decoration:none;font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--gold-d);transition:all .4s;cursor:pointer;font-family:inherit}
 .bo:hover{border-color:var(--gold);background:rgba(201,168,76,.06);transform:translateY(-2px)}
 .bi{width:13px;height:13px;transition:transform .3s}.bg:hover .bi{transform:translateX(3px)}
 
@@ -87,6 +91,7 @@ nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(30px);-webkit-ba
 section{padding:8rem 2.5rem;position:relative}.si{max-width:1100px;margin:0 auto}
 .sl{font-size:.58rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
 .sh{font-family:var(--fd);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.sh em{font-style:italic;color:var(--gold)}
 .sp{font-size:1rem;font-weight:300;color:var(--text2);max-width:580px;line-height:1.9}
 
 /* GROW LINE */
@@ -149,6 +154,153 @@ section{padding:8rem 2.5rem;position:relative}.si{max-width:1100px;margin:0 auto
 .skel::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(201,168,76,.03),transparent);animation:shimmer 1.8s ease infinite}
 @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
+/* ===== FREE TOOLS SECTION ===== */
+#tools{background:var(--bg2);position:relative;overflow:hidden}
+#tools::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.025),transparent 60%);pointer-events:none}
+.tools-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.tools-intro-left{flex:1;min-width:280px}
+.tools-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;border:1px solid var(--gold-d);background:rgba(201,168,76,.05);font-size:.55rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:1.2rem}
+.tools-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:livePulse 2s ease infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
+
+/* Accordion tools */
+.tool-rack{border-top:1px solid var(--bdr2)}
+.tool-item{border-bottom:1px solid var(--bdr2);position:relative;transition:background .5s}
+.tool-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.tool-item.open{background:linear-gradient(to right,rgba(201,168,76,.015),transparent 60%)}
+.tool-item.open::before{transform:scaleY(1)}
+
+.tool-trigger{width:100%;background:transparent;border:none;color:var(--text);padding:2rem 2.2rem 2rem 3rem;display:grid;grid-template-columns:auto 1fr auto auto;gap:1.8rem;align-items:center;cursor:pointer;text-align:left;font-family:inherit;transition:padding .4s}
+.tool-trigger:hover{padding-left:3.5rem}
+.tool-index{font-family:var(--fd);font-size:.9rem;font-style:italic;color:var(--gold);letter-spacing:.05em;font-weight:600;opacity:.8;transition:opacity .3s}
+.tool-item.open .tool-index{opacity:1}
+.tool-name{font-family:var(--fd);font-size:clamp(1.35rem,2.4vw,1.85rem);font-weight:700;line-height:1.25;letter-spacing:-.005em}
+.tool-name em{font-style:italic;color:var(--gold);font-weight:600}
+.tool-tag{font-size:.55rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--text3);padding:.3rem .7rem;border:1px solid var(--bdr2);transition:all .3s;white-space:nowrap}
+.tool-item:hover .tool-tag{border-color:var(--gold-d);color:var(--gold)}
+.tool-plus{width:36px;height:36px;border:1px solid var(--bdr2);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;transition:all .5s cubic-bezier(.16,1,.3,1)}
+.tool-plus::before,.tool-plus::after{content:'';position:absolute;background:var(--gold);transition:all .4s cubic-bezier(.16,1,.3,1)}
+.tool-plus::before{width:12px;height:1.5px}
+.tool-plus::after{width:1.5px;height:12px}
+.tool-item.open .tool-plus{border-color:var(--gold);background:rgba(201,168,76,.08);transform:rotate(135deg)}
+.tool-item:hover .tool-plus{border-color:var(--gold-d)}
+
+.tool-panel{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.16,1,.3,1)}
+.tool-item.open .tool-panel{max-height:4000px}
+.tool-inner{padding:.5rem 2.2rem 3.5rem 3rem;display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:start}
+
+.tool-desc{font-family:var(--fd);font-size:1.1rem;font-weight:400;font-style:italic;color:var(--text2);line-height:1.55;padding-right:1rem;border-left:1px solid var(--bdr2);padding-left:1.8rem;margin-left:-.5rem}
+
+.tool-form{display:flex;flex-direction:column;gap:1.4rem}
+.fld{display:flex;flex-direction:column;gap:.55rem}
+.fld-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.fld label{font-size:.55rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--text3)}
+.fld input[type="number"],.fld input[type="text"],.fld select{background:var(--bg);border:1px solid var(--bdr2);color:var(--text);padding:.95rem 1rem;font-family:var(--fb);font-size:.88rem;font-weight:400;transition:all .3s;appearance:none;border-radius:0}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--gold-d);background:var(--bg3)}
+.fld input::placeholder{color:var(--text3);font-style:italic}
+.fld select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23c9a84c' d='M5 6L0 0h10z'/></svg>");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.3rem}
+
+.pill-row{display:flex;flex-wrap:wrap;gap:.45rem}
+.pill{position:relative}
+.pill input{position:absolute;opacity:0;pointer-events:none}
+.pill label{display:inline-block;padding:.55rem 1rem;background:var(--bg);border:1px solid var(--bdr2);color:var(--text2);font-size:.7rem;font-weight:500;letter-spacing:.05em;cursor:pointer;transition:all .3s}
+.pill label:hover{color:var(--text);border-color:var(--text3)}
+.pill input:checked+label{background:rgba(201,168,76,.08);border-color:var(--gold-d);color:var(--gold)}
+
+.tool-btn-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.3rem}
+
+/* Result card */
+.tool-result{background:var(--bg);border:1px solid var(--bdr2);padding:2rem;margin-top:.3rem;position:relative;display:none;overflow:hidden}
+.tool-result::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-d),var(--gold),var(--gold-d),transparent)}
+.tool-result.show{display:block;animation:resultIn .6s cubic-bezier(.16,1,.3,1)}
+@keyframes resultIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.res-eyebrow{font-size:.55rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.res-main{font-family:var(--fd);font-size:2.6rem;font-weight:700;line-height:1;margin-bottom:.5rem;color:var(--text)}
+.res-main em{font-style:italic;color:var(--gold);font-weight:700}
+.res-sub{font-family:var(--fd);font-style:italic;color:var(--text2);font-size:1rem;font-weight:400;margin-bottom:1.4rem}
+.res-break{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1.2rem;padding-top:1.2rem;border-top:1px solid var(--bdr2)}
+.res-break-item .rb-l{font-size:.55rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);margin-bottom:.3rem}
+.res-break-item .rb-v{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--text)}
+.res-note{margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid var(--bdr2);font-size:.82rem;color:var(--text2);font-weight:300;line-height:1.7}
+
+/* Caffeine bar */
+.caf-bar{height:4px;background:var(--bdr2);margin-top:1rem;overflow:hidden;position:relative}
+.caf-bar::after{content:'';position:absolute;top:0;bottom:0;left:calc(400/600*100%);width:1px;background:var(--text3);opacity:.5}
+.caf-fill{height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold));transition:width .8s cubic-bezier(.16,1,.3,1);width:0}
+.caf-fill.warn{background:linear-gradient(90deg,#8a4a2a,#c76a3e)}
+
+.drink-list{margin-top:1rem;border-top:1px solid var(--bdr2)}
+.drink-row{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0;border-bottom:1px solid var(--bdr);font-size:.82rem;color:var(--text2)}
+.drink-row:last-child{border-bottom:none}
+.drink-row .dk-time{font-family:var(--fd);font-style:italic;color:var(--text3);font-size:.78rem;margin-left:.4rem}
+.drink-row .dk-mg{color:var(--text);font-weight:500;margin-right:.6rem}
+.rem-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.3rem;padding:0 .4rem;line-height:1;transition:color .3s}
+.rem-btn:hover{color:var(--gold)}
+
+/* Stack checker */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.45rem}
+.stack-item{position:relative}
+.stack-item input{position:absolute;opacity:0;pointer-events:none}
+.stack-item label{display:block;padding:.7rem .85rem;background:var(--bg);border:1px solid var(--bdr2);color:var(--text2);font-size:.78rem;cursor:pointer;transition:all .3s}
+.stack-item label:hover{color:var(--text);border-color:var(--text3)}
+.stack-item input:checked+label{background:rgba(201,168,76,.06);border-color:var(--gold-d);color:var(--gold)}
+
+/* Spend audit grid */
+.spend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.5rem}
+.spend-row{display:grid;grid-template-columns:1fr auto;gap:.5rem;align-items:center;background:var(--bg);border:1px solid var(--bdr2);padding:.6rem .7rem;transition:border-color .3s}
+.spend-row:focus-within{border-color:var(--gold-d)}
+.spend-row .sp-name{font-size:.78rem;color:var(--text2);display:flex;align-items:center;gap:.4rem}
+.spend-row .sp-name::before{content:'';width:6px;height:6px;background:var(--text3);border-radius:50%;flex-shrink:0;transition:background .3s}
+.spend-row.strong .sp-name::before{background:var(--gold)}
+.spend-row.moderate .sp-name::before{background:var(--gold-d)}
+.spend-row.weak .sp-name::before{background:var(--text3);opacity:.4}
+.spend-row input[type="number"]{width:75px;background:transparent;border:none;border-bottom:1px solid var(--bdr2);color:var(--text);padding:.3rem .4rem;font-family:inherit;font-size:.82rem;text-align:right}
+.spend-row input[type="number"]:focus{outline:none;border-bottom-color:var(--gold)}
+.spend-row input[type="number"]::placeholder{color:var(--text3);font-style:italic}
+
+.finding{padding:.95rem 1.1rem;background:var(--bg3);border-left:2px solid var(--text3);margin-bottom:.6rem;font-size:.85rem;line-height:1.6;color:var(--text2)}
+.finding strong{color:var(--gold);font-weight:600}
+.finding.issue{border-left-color:#c76a3e}
+.finding.good{border-left-color:var(--gold)}
+.finding.info{border-left-color:var(--gold-v)}
+
+/* Disclaimer strip */
+.tools-disclaimer{margin-top:3.5rem;padding:1.5rem 2rem;background:var(--bg);border:1px solid var(--bdr);text-align:center}
+.tools-disclaimer p{font-size:.78rem;color:var(--text3);font-weight:300;line-height:1.7}
+.tools-disclaimer em{font-family:var(--fd);font-style:italic;color:var(--text2)}
+
+/* References panel */
+.refs-block{margin-top:1.2rem;background:var(--bg);border:1px solid var(--bdr);overflow:hidden}
+.refs-trigger{width:100%;background:transparent;border:none;color:var(--text);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left;font-family:inherit;transition:background .4s}
+.refs-trigger:hover{background:var(--card)}
+.refs-trigger-left{display:flex;align-items:center;gap:1.2rem}
+.refs-icon{width:28px;height:28px;border:1px solid var(--gold-d);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .4s}
+.refs-icon svg{width:13px;height:13px;color:var(--gold)}
+.refs-block.open .refs-icon{background:rgba(201,168,76,.08);transform:rotate(-5deg) scale(1.05)}
+.refs-label{display:flex;flex-direction:column;gap:.15rem}
+.refs-label-top{font-size:.55rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.refs-label-main{font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--text);letter-spacing:-.005em}
+.refs-label-main em{font-style:italic;color:var(--gold);font-weight:600}
+.refs-plus{width:28px;height:28px;border:1px solid var(--bdr2);display:flex;align-items:center;justify-content:center;position:relative;transition:all .5s cubic-bezier(.16,1,.3,1)}
+.refs-plus::before,.refs-plus::after{content:'';position:absolute;background:var(--gold);transition:all .4s cubic-bezier(.16,1,.3,1)}
+.refs-plus::before{width:10px;height:1.5px}
+.refs-plus::after{width:1.5px;height:10px}
+.refs-block.open .refs-plus{border-color:var(--gold);background:rgba(201,168,76,.08);transform:rotate(135deg)}
+.refs-panel{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.16,1,.3,1)}
+.refs-block.open .refs-panel{max-height:5000px}
+.refs-inner{padding:.5rem 2rem 2.5rem;border-top:1px solid var(--bdr)}
+.refs-intro{font-family:var(--fd);font-style:italic;color:var(--text2);font-size:.95rem;margin:1.5rem 0 2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--bdr);line-height:1.6}
+.refs-group{margin-bottom:2rem}
+.refs-group:last-child{margin-bottom:0}
+.refs-group-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--bdr)}
+.refs-group-title em{font-style:italic;color:var(--gold);font-weight:600}
+.refs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.7rem}
+.refs-list li{font-size:.82rem;color:var(--text2);line-height:1.65;padding-left:1rem;position:relative;font-weight:300}
+.refs-list li::before{content:'';position:absolute;left:0;top:.55rem;width:4px;height:4px;background:var(--gold-d);border-radius:50%}
+.refs-list li strong{color:var(--text);font-weight:500}
+.refs-list a{color:var(--text2);text-decoration:none;border-bottom:1px solid var(--bdr2);transition:all .3s}
+.refs-list a:hover{color:var(--gold);border-bottom-color:var(--gold-d)}
+
 /* COUNTER */
 .cs{padding:5rem 2.5rem;background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
 .cr{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
@@ -186,13 +338,13 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 .fbot{max-width:1100px;margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;font-size:.65rem;color:var(--text3)}
 
 /* RESPONSIVE */
-@media(max-width:900px){.ab-grid{grid-template-columns:1fr;gap:2.5rem}.gg{grid-template-columns:1fr 1fr}.cr{grid-template-columns:1fr 1fr;gap:1.5rem}.sb{min-height:280px}.sb-gold{display:none}.sb.vis .sb-l{transform:none}.sb.vis .sb-r{transform:none}.golden-row{grid-template-columns:1fr 1fr;gap:.8rem}}
-@media(max-width:650px){.nk{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,10,.97);flex-direction:column;padding:1.5rem 2.5rem;gap:1.2rem;border-bottom:1px solid var(--bdr)}.nk.open{display:flex}.nm{display:block}.gg{grid-template-columns:1fr}.hero{padding:6rem 1.5rem 2rem}section{padding:5rem 1.5rem}.fi{flex-direction:column}.fbot{flex-direction:column;gap:.3rem}.cr{grid-template-columns:1fr 1fr}.ci .cn{font-size:2.5rem}.h-ctas{flex-direction:column;align-items:center}.mt span{font-size:1.2rem}.golden-row{grid-template-columns:1fr 1fr;gap:.6rem}.golden-sq{padding:1.2rem .8rem}.golden-sq h4{font-size:.88rem}.sb{min-height:240px}.h-pre .ln{display:none}.h-pre{letter-spacing:.25em;font-size:.55rem}.contact-strip{padding:4rem 1.5rem}.contact-email{padding:.9rem 1.5rem}.contact-email span{font-size:.7rem;letter-spacing:.06em}}
+@media(max-width:900px){.ab-grid{grid-template-columns:1fr;gap:2.5rem}.gg{grid-template-columns:1fr 1fr}.cr{grid-template-columns:1fr 1fr;gap:1.5rem}.sb{min-height:280px}.sb-gold{display:none}.sb.vis .sb-l{transform:none}.sb.vis .sb-r{transform:none}.golden-row{grid-template-columns:1fr 1fr;gap:.8rem}.tool-inner{grid-template-columns:1fr;gap:1.8rem}.tool-desc{border-left:none;border-top:1px solid var(--bdr2);padding-left:0;padding-top:1.3rem;margin-left:0}.tool-trigger{padding:1.6rem 1.3rem 1.6rem 1.7rem;grid-template-columns:auto 1fr auto;gap:1rem}.tool-trigger:hover{padding-left:1.9rem}.tool-tag{display:none}.tool-inner{padding:.5rem 1.3rem 2.5rem 1.7rem}}
+@media(max-width:650px){.nk{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,10,.97);flex-direction:column;padding:1.5rem 2.5rem;gap:1.2rem;border-bottom:1px solid var(--bdr)}.nk.open{display:flex}.nm{display:block}.gg{grid-template-columns:1fr}.hero{padding:6rem 1.5rem 2rem}section{padding:5rem 1.5rem}.fi{flex-direction:column}.fbot{flex-direction:column;gap:.3rem}.cr{grid-template-columns:1fr 1fr}.ci .cn{font-size:2.5rem}.h-ctas{flex-direction:column;align-items:center}.mt span{font-size:1.2rem}.golden-row{grid-template-columns:1fr 1fr;gap:.6rem}.golden-sq{padding:1.2rem .8rem}.golden-sq h4{font-size:.88rem}.sb{min-height:240px}.h-pre .ln{display:none}.h-pre{letter-spacing:.25em;font-size:.55rem}.contact-strip{padding:4rem 1.5rem}.contact-email{padding:.9rem 1.5rem}.contact-email span{font-size:.7rem;letter-spacing:.06em}.fld-grid{grid-template-columns:1fr}.tool-name{font-size:1.15rem}.res-main{font-size:2rem}.tool-inner{padding-left:1.3rem;padding-right:1rem}.tool-trigger{padding-left:1.3rem;padding-right:.9rem}.tool-trigger:hover{padding-left:1.5rem}.tool-index{font-size:.75rem}.tools-intro{flex-direction:column;align-items:flex-start}.spend-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<nav id="mainNav"><div class="ni"><a href="#" class="nl">Performance<span>Archive</span></a><button class="nm" aria-label="Menu" onclick="this.classList.toggle('active');document.querySelector('.nk').classList.toggle('open')"><span></span><span></span><span></span></button><ul class="nk"><li><a href="#about" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">About</a></li><li><a href="#guides" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">Guides</a></li><li><a href="#contact" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">Contact</a></li><li><a href="https://www.etsy.com/shop/PerformanceArchive" target="_blank" rel="noopener">Shop</a></li></ul></div></nav>
+<nav id="mainNav"><div class="ni"><a href="#" class="nl">Performance<span>Archive</span></a><button class="nm" aria-label="Menu" onclick="this.classList.toggle('active');document.querySelector('.nk').classList.toggle('open')"><span></span><span></span><span></span></button><ul class="nk"><li><a href="#about" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">About</a></li><li><a href="#guides" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">Guides</a></li><li><a href="#tools" class="nk-free" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">Free Tools</a></li><li><a href="#contact" onclick="document.querySelector('.nm').classList.remove('active');this.closest('.nk').classList.remove('open')">Contact</a></li><li><a href="https://www.etsy.com/shop/PerformanceArchive" target="_blank" rel="noopener">Shop</a></li></ul></div></nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -265,6 +417,471 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 </div>
 </section>
 
+<!-- ============ FREE TOOLS SECTION ============ -->
+<section id="tools">
+<div class="si">
+<div class="tools-intro">
+<div class="tools-intro-left">
+<div class="sl r rup">Free Tools</div>
+<h2 class="sh r rup d1">Check the <em>Facts</em></h2>
+<p class="sp r rup d2">Nine interactive tools. No sign-up. No data stored. Run the numbers on your protein, caffeine, supplement spend, pre-workout dose and more.</p>
+<div class="tools-badge r rup d3">Live &amp; Free</div>
+</div>
+</div>
+
+<div class="tool-rack r rup d4">
+
+<!-- TOOL 1: Protein -->
+<div class="tool-item" data-tool="protein">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">01 /</span>
+<span class="tool-name">Protein Intake <em>Calculator</em></span>
+<span class="tool-tag">Most Popular</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">How much protein do you actually need? Based on your weight, activity and goal. Includes daily cost estimates and food equivalents.</p>
+<div class="tool-form">
+<div class="fld-grid">
+<div class="fld"><label for="p-weight">Weight (kg)</label><input type="number" id="p-weight" min="30" max="250" step="0.1" placeholder="e.g. 75"></div>
+<div class="fld"><label for="p-activity">Activity</label><select id="p-activity"><option value="1.0">Sedentary</option><option value="1.4" selected>Lightly Active</option><option value="1.6">Active (Regular Training)</option><option value="1.8">Very Active (Daily Training)</option></select></div>
+</div>
+<div class="fld"><label>Your Goal</label>
+<div class="pill-row">
+<div class="pill"><input type="radio" name="p-goal" id="p-goal-m" value="maintain" checked><label for="p-goal-m">Maintain</label></div>
+<div class="pill"><input type="radio" name="p-goal" id="p-goal-b" value="build"><label for="p-goal-b">Build Muscle</label></div>
+<div class="pill"><input type="radio" name="p-goal" id="p-goal-l" value="lose"><label for="p-goal-l">Lose Fat</label></div>
+<div class="pill"><input type="radio" name="p-goal" id="p-goal-o" value="older"><label for="p-goal-o">Over 60</label></div>
+</div>
+</div>
+<div class="tool-btn-row"><button class="bg" onclick="calcProtein()">Calculate <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button></div>
+<div class="tool-result" id="p-result">
+<div class="res-eyebrow">Daily Protein Target</div>
+<div class="res-main"><em id="p-grams">0</em>g / day</div>
+<p class="res-sub" id="p-range"></p>
+<div class="res-break">
+<div class="res-break-item"><div class="rb-l">From Whey Powder</div><div class="rb-v" id="p-cost-whey">£0.00</div></div>
+<div class="res-break-item"><div class="rb-l">From Mixed Food</div><div class="rb-v" id="p-cost-food">£0.00</div></div>
+<div class="res-break-item"><div class="rb-l">Equivalent In Eggs</div><div class="rb-v" id="p-eggs">0</div></div>
+</div>
+<p class="res-note" id="p-note"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TOOL 2: Caffeine -->
+<div class="tool-item" data-tool="caffeine">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">02 /</span>
+<span class="tool-name">Caffeine Load <em>Tracker</em></span>
+<span class="tool-tag">EFSA Safe Limit</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">Log what you have drunk today. See where you sit against the EFSA 400mg daily limit. Flags anything likely to affect tonight's sleep.</p>
+<div class="tool-form">
+<div class="fld-grid">
+<div class="fld"><label for="c-drink">Drink</label><select id="c-drink">
+<option value="80">Instant Coffee (80mg)</option>
+<option value="95">Brewed Coffee (95mg)</option>
+<option value="63">Espresso Single (63mg)</option>
+<option value="126">Espresso Double (126mg)</option>
+<option value="50">Black Tea (50mg)</option>
+<option value="30">Green Tea (30mg)</option>
+<option value="70">Matcha (70mg)</option>
+<option value="80">Red Bull 250ml (80mg)</option>
+<option value="160">Monster 500ml (160mg)</option>
+<option value="200">Prime Energy 330ml (200mg)</option>
+<option value="34">Coca-Cola 330ml (34mg)</option>
+<option value="150">Pre-Workout Average (150mg)</option>
+<option value="300">Pre-Workout Strong (300mg)</option>
+</select></div>
+<div class="fld"><label for="c-time">Time of Day</label><select id="c-time"><option value="Morning">Morning</option><option value="Midday">Midday</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option></select></div>
+</div>
+<div class="tool-btn-row"><button class="bg" onclick="addDrink()">Add Drink</button><button class="bo" onclick="resetDrinks()">Clear All</button></div>
+<div class="drink-list" id="c-drinks"></div>
+<div class="tool-result" id="c-result">
+<div class="res-eyebrow">Total Caffeine Today</div>
+<div class="res-main"><em id="c-total">0</em>mg</div>
+<p class="res-sub" id="c-status"></p>
+<div class="caf-bar"><div class="caf-fill" id="c-bar"></div></div>
+<p class="res-note" id="c-note"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TOOL 3: Cost Per Gram -->
+<div class="tool-item" data-tool="cpg">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">03 /</span>
+<span class="tool-name">Cost Per Gram of <em>Protein</em></span>
+<span class="tool-tag">Expose The Scams</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">Work out what you are actually paying for the protein in any product. Brutally honest. Perfect for spotting inflated protein bars and drinks.</p>
+<div class="tool-form">
+<div class="fld"><label for="cpg-name">Product Name <span style="color:var(--text3);text-transform:none;letter-spacing:0">(optional)</span></label><input type="text" id="cpg-name" placeholder="e.g. Grenade Carb Killa Bar"></div>
+<div class="fld-grid">
+<div class="fld"><label for="cpg-price">Price (£)</label><input type="number" id="cpg-price" min="0" step="0.01" placeholder="e.g. 2.49"></div>
+<div class="fld"><label for="cpg-protein">Protein Per Serving (g)</label><input type="number" id="cpg-protein" min="0" step="0.1" placeholder="e.g. 20"></div>
+</div>
+<div class="fld"><label for="cpg-servings">Servings In Pack</label><input type="number" id="cpg-servings" min="1" step="1" value="1"></div>
+<div class="tool-btn-row"><button class="bg" onclick="calcCPG()">Run The Numbers <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button></div>
+<div class="tool-result" id="cpg-result">
+<div class="res-eyebrow">Cost Per Gram of Protein</div>
+<div class="res-main"><em id="cpg-value">0</em>p / g</div>
+<p class="res-sub" id="cpg-verdict"></p>
+<div class="res-break">
+<div class="res-break-item"><div class="rb-l">Total Protein</div><div class="rb-v" id="cpg-total-p">0g</div></div>
+<div class="res-break-item"><div class="rb-l">Cost Per 30g Serve</div><div class="rb-v" id="cpg-per-serve">£0.00</div></div>
+</div>
+<p class="res-note" id="cpg-benchmark"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TOOL 4: Stack -->
+<div class="tool-item" data-tool="stack">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">04 /</span>
+<span class="tool-name">Supplement Stack <em>Checker</em></span>
+<span class="tool-tag">Flags Clashes</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">Tick everything you take. The tool flags absorption clashes, timing issues, and duplicates doing the same job. Most people have at least one.</p>
+<div class="tool-form">
+<div class="fld"><label>What Are You Taking?</label><div class="stack-grid" id="stack-checks"></div></div>
+<div class="tool-btn-row"><button class="bg" onclick="checkStack()">Analyse My Stack <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button></div>
+<div class="tool-result" id="stack-result">
+<div class="res-eyebrow">Findings</div>
+<div id="stack-findings" style="margin-top:1rem"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TOOL 5: Hydration -->
+<div class="tool-item" data-tool="hydration">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">05 /</span>
+<span class="tool-name">Hydration <em>Target</em></span>
+<span class="tool-tag">Beyond 8 Glasses</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">A no-nonsense daily water target based on your weight, training load and climate. Cuts through the lazy "8 glasses a day" advice.</p>
+<div class="tool-form">
+<div class="fld-grid">
+<div class="fld"><label for="h-weight">Weight (kg)</label><input type="number" id="h-weight" min="30" max="250" step="0.1" placeholder="e.g. 75"></div>
+<div class="fld"><label for="h-training">Training Today (minutes)</label><input type="number" id="h-training" min="0" step="5" value="0"></div>
+</div>
+<div class="fld"><label>Climate</label>
+<div class="pill-row">
+<div class="pill"><input type="radio" name="h-climate" id="h-c1" value="cool" checked><label for="h-c1">Cool / Normal</label></div>
+<div class="pill"><input type="radio" name="h-climate" id="h-c2" value="warm"><label for="h-c2">Warm</label></div>
+<div class="pill"><input type="radio" name="h-climate" id="h-c3" value="hot"><label for="h-c3">Hot / Humid</label></div>
+</div>
+</div>
+<div class="tool-btn-row"><button class="bg" onclick="calcHydration()">Calculate <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button></div>
+<div class="tool-result" id="h-result">
+<div class="res-eyebrow">Daily Water Target</div>
+<div class="res-main"><em id="h-litres">0</em>L</div>
+<p class="res-sub" id="h-sub"></p>
+<div class="res-break">
+<div class="res-break-item"><div class="rb-l">Base Need</div><div class="rb-v" id="h-base">0L</div></div>
+<div class="res-break-item"><div class="rb-l">Training Add-On</div><div class="rb-v" id="h-train">0L</div></div>
+<div class="res-break-item"><div class="rb-l">Climate Add-On</div><div class="rb-v" id="h-climate-add">0L</div></div>
+</div>
+<p class="res-note">Roughly 20 to 30 percent of your daily fluid comes from food. The figure above is what you need to drink on top of a normal diet.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TOOL 6: TDEE & Macros -->
+<div class="tool-item" data-tool="tdee">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">06 /</span>
+<span class="tool-name">Calorie &amp; Macro <em>Calculator</em></span>
+<span class="tool-tag">TDEE + Split</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">Daily calories (TDEE) and protein, carb and fat split for your goal. Uses the Mifflin-St Jeor equation, the standard used in clinical settings.</p>
+<div class="tool-form">
+<div class="fld-grid">
+<div class="fld"><label for="t-age">Age</label><input type="number" id="t-age" min="15" max="100" placeholder="e.g. 32"></div>
+<div class="fld"><label for="t-sex">Sex</label><select id="t-sex"><option value="male">Male</option><option value="female">Female</option></select></div>
+</div>
+<div class="fld-grid">
+<div class="fld"><label for="t-weight">Weight (kg)</label><input type="number" id="t-weight" min="30" max="250" step="0.1" placeholder="e.g. 75"></div>
+<div class="fld"><label for="t-height">Height (cm)</label><input type="number" id="t-height" min="120" max="230" placeholder="e.g. 178"></div>
+</div>
+<div class="fld"><label for="t-activity">Activity Level</label><select id="t-activity">
+<option value="1.2">Sedentary (desk job, no exercise)</option>
+<option value="1.375" selected>Lightly Active (1-3 sessions/week)</option>
+<option value="1.55">Moderately Active (3-5 sessions/week)</option>
+<option value="1.725">Very Active (6-7 sessions/week)</option>
+<option value="1.9">Extremely Active (twice daily, manual job)</option>
+</select></div>
+<div class="fld"><label>Your Goal</label>
+<div class="pill-row">
+<div class="pill"><input type="radio" name="t-goal" id="t-g1" value="cut" checked><label for="t-g1">Lose Fat</label></div>
+<div class="pill"><input type="radio" name="t-goal" id="t-g2" value="maintain"><label for="t-g2">Maintain</label></div>
+<div class="pill"><input type="radio" name="t-goal" id="t-g3" value="bulk"><label for="t-g3">Build Muscle</label></div>
+</div>
+</div>
+<div class="tool-btn-row"><button class="bg" onclick="calcTDEE()">Calculate <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button></div>
+<div class="tool-result" id="t-result">
+<div class="res-eyebrow">Daily Target</div>
+<div class="res-main"><em id="t-cals">0</em> kcal</div>
+<p class="res-sub" id="t-sub"></p>
+<div class="res-break">
+<div class="res-break-item"><div class="rb-l">Protein</div><div class="rb-v" id="t-p">0g</div></div>
+<div class="res-break-item"><div class="rb-l">Carbs</div><div class="rb-v" id="t-c">0g</div></div>
+<div class="res-break-item"><div class="rb-l">Fat</div><div class="rb-v" id="t-f">0g</div></div>
+</div>
+<p class="res-note" id="t-note"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TOOL 7: Pre-Workout Analyser -->
+<div class="tool-item" data-tool="preworkout">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">07 /</span>
+<span class="tool-name">Pre-Workout <em>Dose Checker</em></span>
+<span class="tool-tag">Spot Underdosing</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">Enter what's on your pre-workout label. Tool flags underdosed ingredients against clinical research doses. Most pre-workouts fail at least one.</p>
+<div class="tool-form">
+<div class="fld-grid">
+<div class="fld"><label for="pw-caffeine">Caffeine (mg)</label><input type="number" id="pw-caffeine" min="0" step="5" placeholder="e.g. 200"></div>
+<div class="fld"><label for="pw-citrulline">L-Citrulline (g)</label><input type="number" id="pw-citrulline" min="0" step="0.1" placeholder="e.g. 6"></div>
+</div>
+<div class="fld-grid">
+<div class="fld"><label for="pw-beta">Beta-Alanine (g)</label><input type="number" id="pw-beta" min="0" step="0.1" placeholder="e.g. 3.2"></div>
+<div class="fld"><label for="pw-creatine">Creatine (g)</label><input type="number" id="pw-creatine" min="0" step="0.1" placeholder="e.g. 3"></div>
+</div>
+<div class="fld-grid">
+<div class="fld"><label for="pw-betaine">Betaine (g)</label><input type="number" id="pw-betaine" min="0" step="0.1" placeholder="e.g. 2.5"></div>
+<div class="fld"><label for="pw-tyrosine">L-Tyrosine (g)</label><input type="number" id="pw-tyrosine" min="0" step="0.1" placeholder="e.g. 1"></div>
+</div>
+<div class="fld"><label>Contains A Proprietary Blend?</label>
+<div class="pill-row">
+<div class="pill"><input type="radio" name="pw-prop" id="pw-p1" value="no" checked><label for="pw-p1">No</label></div>
+<div class="pill"><input type="radio" name="pw-prop" id="pw-p2" value="yes"><label for="pw-p2">Yes</label></div>
+</div>
+</div>
+<div class="tool-btn-row"><button class="bg" onclick="checkPreWorkout()">Analyse Label <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button></div>
+<div class="tool-result" id="pw-result">
+<div class="res-eyebrow">Dose Score</div>
+<div class="res-main"><em id="pw-score">0</em> / 100</div>
+<p class="res-sub" id="pw-verdict"></p>
+<div id="pw-findings" style="margin-top:1.4rem"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TOOL 8: Supplement Spend Audit -->
+<div class="tool-item" data-tool="spend">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">08 /</span>
+<span class="tool-name">Supplement Spend <em>Audit</em></span>
+<span class="tool-tag">Monthly Cost</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">Work out what your supplement stack actually costs you per month. Ranked by evidence strength, so you know which ones are worth the spend.</p>
+<div class="tool-form">
+<div class="fld"><label>Tick What You Buy &amp; Enter Monthly Cost (£)</label>
+<div class="spend-grid" id="spend-grid"></div>
+</div>
+<div class="tool-btn-row"><button class="bg" onclick="auditSpend()">Audit My Spend <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button></div>
+<div class="tool-result" id="spend-result">
+<div class="res-eyebrow">Your Monthly Spend</div>
+<div class="res-main">£<em id="spend-total">0.00</em></div>
+<p class="res-sub" id="spend-sub"></p>
+<div class="res-break">
+<div class="res-break-item"><div class="rb-l">Annual Cost</div><div class="rb-v" id="spend-year">£0</div></div>
+<div class="res-break-item"><div class="rb-l">Strong Evidence</div><div class="rb-v" id="spend-strong">£0</div></div>
+<div class="res-break-item"><div class="rb-l">Weak / No Evidence</div><div class="rb-v" id="spend-weak">£0</div></div>
+</div>
+<div id="spend-findings" style="margin-top:1.4rem"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TOOL 9: How Long Will This Last -->
+<div class="tool-item" data-tool="duration">
+<button class="tool-trigger" type="button" onclick="toggleTool(this)">
+<span class="tool-index">09 /</span>
+<span class="tool-name">How Long Will It <em>Last?</em></span>
+<span class="tool-tag">Cost Per Day</span>
+<span class="tool-plus"></span>
+</button>
+<div class="tool-panel">
+<div class="tool-inner">
+<p class="tool-desc">Stops you getting ripped off. Enter a supplement's price, size and your daily dose, see the true cost per day and how long the tub will actually last.</p>
+<div class="tool-form">
+<div class="fld"><label for="d-name">Product Name <span style="color:var(--text3);text-transform:none;letter-spacing:0">(optional)</span></label><input type="text" id="d-name" placeholder="e.g. Optimum Nutrition Creatine"></div>
+<div class="fld-grid">
+<div class="fld"><label for="d-price">Price (£)</label><input type="number" id="d-price" min="0" step="0.01" placeholder="e.g. 24.99"></div>
+<div class="fld"><label for="d-size">Container Size (g)</label><input type="number" id="d-size" min="0" step="1" placeholder="e.g. 300"></div>
+</div>
+<div class="fld"><label for="d-dose">Your Daily Dose (g)</label><input type="number" id="d-dose" min="0" step="0.1" placeholder="e.g. 5"></div>
+<div class="tool-btn-row"><button class="bg" onclick="calcDuration()">Calculate <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button></div>
+<div class="tool-result" id="d-result">
+<div class="res-eyebrow">Your Tub Will Last</div>
+<div class="res-main"><em id="d-days">0</em> days</div>
+<p class="res-sub" id="d-sub"></p>
+<div class="res-break">
+<div class="res-break-item"><div class="rb-l">Cost Per Day</div><div class="rb-v" id="d-cpd">£0.00</div></div>
+<div class="res-break-item"><div class="rb-l">Cost Per Month</div><div class="rb-v" id="d-cpm">£0.00</div></div>
+<div class="res-break-item"><div class="rb-l">Total Doses</div><div class="rb-v" id="d-doses">0</div></div>
+</div>
+<p class="res-note" id="d-note"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="tools-disclaimer r rup">
+<p><em>These tools give general guidance, not medical advice.</em> If you have a health condition or take medication, speak to a GP or registered dietitian before changing your intake of anything.</p>
+</div>
+
+<div class="refs-block r rup" id="refs-block">
+<button class="refs-trigger" type="button" onclick="document.getElementById('refs-block').classList.toggle('open')">
+<div class="refs-trigger-left">
+<div class="refs-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg></div>
+<div class="refs-label">
+<span class="refs-label-top">Sources &amp; Evidence</span>
+<span class="refs-label-main">Every Claim, <em>Referenced</em></span>
+</div>
+</div>
+<span class="refs-plus"></span>
+</button>
+<div class="refs-panel">
+<div class="refs-inner">
+<p class="refs-intro">The doses, thresholds and formulas used in these tools come from peer-reviewed research, regulatory bodies, and UK supermarket pricing verified in 2026. Every figure below is traceable to its source.</p>
+
+<div class="refs-group">
+<h4 class="refs-group-title">Protein <em>Intake</em></h4>
+<ul class="refs-list">
+<li><strong>Jäger R, Kerksick CM, Campbell BI, et al.</strong> International Society of Sports Nutrition Position Stand: Protein and exercise. <em>Journal of the International Society of Sports Nutrition</em>, 2017. The 1.6 to 2.2g/kg range for building muscle and preserving it during a cut comes from this position stand.</li>
+<li><strong>Morton RW, Murphy KT, McKellar SR, et al.</strong> A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength. <em>British Journal of Sports Medicine</em>, 2018. Confirms 1.6g/kg as the threshold above which further protein gives no additional benefit.</li>
+<li><strong>Bauer J, Biolo G, Cederholm T, et al.</strong> Evidence-based recommendations for optimal dietary protein intake in older people. <em>Journal of the American Medical Directors Association</em>, 2013. The 1.2 to 1.6g/kg recommendation for adults over 60 comes from the PROT-AGE study group.</li>
+<li><strong>British Nutrition Foundation &amp; UK Department of Health.</strong> Reference Nutrient Intake for protein (0.75g/kg) for general adult population. Used as the baseline for the "Maintain" goal.</li>
+</ul>
+</div>
+
+<div class="refs-group">
+<h4 class="refs-group-title">Caffeine <em>Limits</em></h4>
+<ul class="refs-list">
+<li><strong>European Food Safety Authority (EFSA).</strong> Scientific Opinion on the safety of caffeine, 2015. The 400mg daily limit and 200mg single-dose limit for healthy adults is the EFSA reference used throughout the tracker.</li>
+<li><strong>Institute of Medicine.</strong> Caffeine for the Sustainment of Mental Task Performance. Caffeine's half-life of 5 to 6 hours is the basis for the late-day sleep warning.</li>
+<li><strong>NHS.</strong> Caffeine during pregnancy guidance (200mg daily limit). Referenced for users who may be pregnant.</li>
+</ul>
+</div>
+
+<div class="refs-group">
+<h4 class="refs-group-title">Pre-Workout <em>Dosing</em></h4>
+<ul class="refs-list">
+<li><strong>Trexler ET, Smith-Ryan AE, Stout JR, et al.</strong> International society of sports nutrition position stand: Beta-Alanine. <em>Journal of the International Society of Sports Nutrition</em>, 2015. The 3.2g minimum daily threshold for carnosine buffering.</li>
+<li><strong>Gonzalez AM, Spitz RW, Ghigiarelli JJ, et al.</strong> Acute effect of citrulline malate supplementation on upper-body resistance exercise performance. <em>Journal of Strength and Conditioning Research</em>, 2018. The 6 to 8g effective dose range for L-citrulline.</li>
+<li><strong>Kreider RB, Kalman DS, Antonio J, et al.</strong> International Society of Sports Nutrition position stand: safety and efficacy of creatine supplementation. <em>Journal of the International Society of Sports Nutrition</em>, 2017. The 3 to 5g daily creatine dose.</li>
+<li><strong>Cholewa JM, Wyszczelska-Rokiel M, Glowacki R, et al.</strong> Effects of betaine on body composition, performance, and homocysteine thiolactone. <em>Journal of the International Society of Sports Nutrition</em>, 2013. The 2.5g daily betaine dose.</li>
+<li><strong>Grieb P, Blaschek A, Pleyer U, et al.</strong> L-Tyrosine ameliorates some effects of multiple stressors on physical and cognitive performance. Research basis for the 500mg to 2g L-tyrosine range.</li>
+<li><strong>Goldstein ER, Ziegenfuss T, Kalman D, et al.</strong> International society of sports nutrition position stand: caffeine and performance. The 3 to 6mg per kg bodyweight caffeine dose for ergogenic effect.</li>
+</ul>
+</div>
+
+<div class="refs-group">
+<h4 class="refs-group-title">Calories &amp; <em>Macros</em></h4>
+<ul class="refs-list">
+<li><strong>Mifflin MD, St Jeor ST, Hill LA, et al.</strong> A new predictive equation for resting energy expenditure in healthy individuals. <em>American Journal of Clinical Nutrition</em>, 1990. The Mifflin-St Jeor equation used for BMR is the clinical standard recommended by the Academy of Nutrition and Dietetics.</li>
+<li><strong>Frankenfield D, Roth-Yousey L, Compher C.</strong> Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review. <em>Journal of the American Dietetic Association</em>, 2005. Confirms Mifflin-St Jeor as the most accurate of the common BMR equations.</li>
+<li><strong>Hall KD, Guo J.</strong> Obesity Energetics: Body Weight Regulation and the Effects of Diet Composition. <em>Gastroenterology</em>, 2017. Basis for the 20 percent deficit and 10 percent surplus recommendations.</li>
+</ul>
+</div>
+
+<div class="refs-group">
+<h4 class="refs-group-title">Hydration</h4>
+<ul class="refs-list">
+<li><strong>European Food Safety Authority (EFSA).</strong> Scientific Opinion on Dietary Reference Values for water, 2010. The 2 to 2.5L daily adequate intake baseline.</li>
+<li><strong>Sawka MN, Burke LM, Eichner ER, et al.</strong> American College of Sports Medicine position stand: Exercise and fluid replacement. <em>Medicine &amp; Science in Sports &amp; Exercise</em>, 2007. The additional fluid needs during training (approximately 400 to 800ml per hour).</li>
+<li><strong>NHS.</strong> Water, drinks and your health guidance. Reference for everyday hydration advice for UK adults.</li>
+</ul>
+</div>
+
+<div class="refs-group">
+<h4 class="refs-group-title">UK Protein Pricing <em>(verified 2026)</em></h4>
+<ul class="refs-list">
+<li><strong>Whey protein:</strong> MyProtein Impact Whey Protein 1kg, £24.99 at 82 percent protein concentration = 3.0p per gram of protein. Verified at myprotein.com and multiple UK retailers.</li>
+<li><strong>Chicken breast:</strong> Tesco British Chicken Breast Fillets 1kg, £6.90 at 23g protein per 100g raw = 3.0p per gram of protein. Verified at tesco.com.</li>
+<li><strong>Eggs:</strong> Tesco Large Free Range 12 pack, £3.25 at 6.5g protein per egg = 4.2p per gram of protein. Verified at tesco.com.</li>
+<li><strong>Mixed food basket (3.5p per gram average):</strong> weighted average of chicken, eggs, whole milk, Greek yoghurt and tinned tuna at Tesco everyday pricing.</li>
+</ul>
+</div>
+
+<div class="refs-group">
+<h4 class="refs-group-title">Supplement <em>Evidence Tiers</em></h4>
+<ul class="refs-list">
+<li><strong>Strong evidence:</strong> supplements with multiple meta-analyses and position stands from the ISSN or equivalent bodies confirming the stated benefit (whey protein, creatine monohydrate, caffeine, vitamin D3, omega-3 for specific populations).</li>
+<li><strong>Moderate evidence:</strong> supplements with individual randomised controlled trials showing benefit but not yet meta-analytic consensus, or proven benefit only in specific populations (magnesium, B12 for vegans, iron for deficient individuals, beta-alanine, citrulline, ashwagandha, casein).</li>
+<li><strong>Weak or no evidence:</strong> supplements where the evidence is inconclusive, benefit is marginal compared to diet, or marketing claims exceed what research supports (BCAAs in the presence of adequate whole-protein intake, EAAs for the same reason, collagen for skin/joints beyond gelatine's effect, greens powders as a vegetable replacement, most multivitamins, test boosters, fat burners).</li>
+<li>Evidence classifications drawn from <strong>Examine.com</strong>'s supplement database grading system and the <strong>Australian Institute of Sport (AIS) Sports Supplement Framework</strong>.</li>
+</ul>
+</div>
+
+<div class="refs-group">
+<h4 class="refs-group-title">Ingredient <em>Interactions</em></h4>
+<ul class="refs-list">
+<li><strong>Hallberg L, Brune M, Rossander L.</strong> The role of vitamin C in iron absorption. <em>International Journal for Vitamin and Nutrition Research. Supplement</em>, 1989. Vitamin C enhancement of non-haem iron absorption.</li>
+<li><strong>Lönnerdal B.</strong> Calcium and iron absorption: mechanisms and public health relevance. <em>International Journal for Vitamin and Nutrition Research</em>, 2010. Calcium's inhibitory effect on iron absorption and the 2-hour separation recommendation.</li>
+<li><strong>Solomons NW.</strong> Competitive interaction of iron and zinc in the diet: consequences for human nutrition. <em>Journal of Nutrition</em>, 1986. Zinc and calcium absorption competition.</li>
+<li><strong>Mazzoli A, Spagnuolo MS, Gatto C, et al.</strong> Vitamin D absorption and bioavailability. Confirms fat-soluble vitamin absorption is improved when taken with dietary fat.</li>
+</ul>
+</div>
+
+<p class="refs-intro" style="margin-top:2rem;margin-bottom:0;padding-bottom:0;border-bottom:none;font-size:.85rem">Spotted something that needs updating? The industry moves fast and reformulations happen. Email <a href="mailto:hello@performancearchive.co.uk" style="color:var(--gold);border-bottom-color:var(--gold-d)">hello@performancearchive.co.uk</a> and I will check the source.</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
 <!-- COUNTER -->
 <div class="cs"><div class="cr">
 <div class="ci r rs d1"><div class="cn" data-count="20">0</div><div class="cl">Pre-Workouts Torn Down</div></div>
@@ -298,7 +915,7 @@ footer{padding:4rem 2.5rem 2rem;border-top:1px solid var(--bdr);background:var(-
 </div>
 
 <footer>
-<div class="fi"><div><div class="fb2">Performance<span>Archive</span></div><p class="ftg">Evidence over hype. Always.</p></div><div class="fl"><a href="#about">About</a><a href="#guides">Guides</a><a href="#contact">Contact</a><a href="https://www.etsy.com/shop/PerformanceArchive" target="_blank" rel="noopener">Shop</a></div></div>
+<div class="fi"><div><div class="fb2">Performance<span>Archive</span></div><p class="ftg">Evidence over hype. Always.</p></div><div class="fl"><a href="#about">About</a><a href="#guides">Guides</a><a href="#tools">Tools</a><a href="#contact">Contact</a><a href="https://www.etsy.com/shop/PerformanceArchive" target="_blank" rel="noopener">Shop</a></div></div>
 <div class="fbot"><span>&copy; 2026 PerformanceArchive. All rights reserved. United Kingdom.</span><span>No sponsors. No affiliates. Independent.</span></div>
 </footer>
 
@@ -318,18 +935,14 @@ setTimeout(()=>{document.querySelector('.h-ctas').style.cssText='opacity:1;trans
 setTimeout(()=>{const gr=document.querySelector('.golden-row');gr.style.cssText='opacity:1;transition:opacity 1s';document.querySelectorAll('.golden-sq').forEach((s,i)=>{s.style.cssText='animation:sqIn .7s cubic-bezier(.16,1,.3,1) '+(i*.12)+'s both'})},1900);
 setTimeout(()=>{const sc=document.querySelector('.scroll-cue');if(sc)sc.style.cssText='opacity:1;transition:opacity 1s'},2400);
 
-// Inject sq keyframe
 const st=document.createElement('style');st.textContent='@keyframes sqIn{from{opacity:0;transform:translateY(20px) scale(.9)}to{opacity:1;transform:none}}';document.head.appendChild(st);
 
-// Nav
 window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',scrollY>80);const sc=document.querySelector('.scroll-cue');if(sc&&scrollY>150){sc.style.opacity='0';sc.style.transition='opacity .5s'}},{passive:true});
 
-// Parallax
 const pL=document.querySelectorAll('[data-p]');let tk=false;
 function px(){const s=scrollY;pL.forEach(l=>{l.style.transform='translateY('+s*parseFloat(l.dataset.p)*40+'px)'});document.querySelectorAll('[data-split]').forEach(el=>{const bg=el.querySelector('.sb-bg');if(bg)bg.style.transform='translateY('+el.getBoundingClientRect().top*.15+'px)'});tk=false}
 window.addEventListener('scroll',()=>{if(!tk){requestAnimationFrame(px);tk=true}},{passive:true});
 
-// Counters
 const counted=new Set();
 const co=new IntersectionObserver(e=>{e.forEach(n=>{if(n.isIntersecting&&!counted.has(n.target)){counted.add(n.target);const el=n.target,t=parseInt(el.dataset.count);if(el.hasAttribute('data-zero')){el.textContent='0';return}const dur=1800,start=performance.now();function tick(now){const p=Math.min((now-start)/dur,1),ea=1-Math.pow(1-p,3);el.textContent=Math.round(t*ea)+'+';if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}})},{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(e=>co.observe(e));
@@ -342,11 +955,7 @@ const grid=document.getElementById('etsy-grid');
 const RSS_URL='https://www.etsy.com/shop/'+SHOP+'/rss';
 const PROXY='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(RSS_URL);
 
-function decodeHTML(str){
-var txt=document.createElement('textarea');
-txt.innerHTML=str;
-return txt.value;
-}
+function decodeHTML(str){var txt=document.createElement('textarea');txt.innerHTML=str;return txt.value}
 
 fetch(PROXY)
 .then(r=>{if(!r.ok)throw new Error(r.status);return r.json()})
@@ -355,40 +964,25 @@ if(!data.items||!data.items.length){grid.innerHTML='<div style="grid-column:1/-1
 grid.innerHTML='';
 data.items.forEach(function(item,i){
 var delay='d'+(Math.min(i+1,9));
-// Extract first image from description HTML
 var tmp=document.createElement('div');
 tmp.innerHTML=item.description||'';
 var imgEl=tmp.querySelector('img');
 var imgSrc=imgEl?imgEl.src:'';
-// Clean description text — remove price line
 var descText=tmp.textContent||tmp.innerText||'';
 descText=descText.replace(/^\s*[\d.,]+\s*GBP\s*/i,'').replace(/\s+/g,' ').trim().substring(0,120);
-
-// Decode HTML entities in title
 var cleanTitle=decodeHTML(item.title);
-
 var card=document.createElement('a');
 card.href=item.link||'https://www.etsy.com/shop/'+SHOP;
-card.target='_blank';
-card.rel='noopener';
+card.target='_blank';card.rel='noopener';
 card.className='gc r rup '+delay;
-card.innerHTML=
-(imgSrc?'<img class="gc-img" src="'+imgSrc+'" alt="'+cleanTitle.replace(/"/g,'&quot;')+'" loading="lazy">':'')+
-'<h3>'+cleanTitle+'</h3>'+
-(descText?'<p>'+descText+'…</p>':'')+
-'<span class="gb">View on Etsy</span>';
-
+card.innerHTML=(imgSrc?'<img class="gc-img" src="'+imgSrc+'" alt="'+cleanTitle.replace(/"/g,'&quot;')+'" loading="lazy">':'')+'<h3>'+cleanTitle+'</h3>'+(descText?'<p>'+descText+'…</p>':'')+'<span class="gb">View on Etsy</span>';
 grid.appendChild(card);
 });
-
-// Add "View All" button after the grid
 var viewAll=document.createElement('div');
 viewAll.style.cssText='text-align:center;margin-top:2.5rem';
 viewAll.className='r rup';
 viewAll.innerHTML='<a href="https://www.etsy.com/shop/'+SHOP+'" class="bg" target="_blank" rel="noopener">View Full Collection <svg class="bi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>';
 grid.parentNode.insertBefore(viewAll,grid.nextSibling);
-
-// Re-observe new cards for reveal animation
 var io2=new IntersectionObserver(function(e){e.forEach(function(n){if(n.isIntersecting)n.target.classList.add('vis')})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
 grid.querySelectorAll('.r').forEach(function(e){io2.observe(e)});
 io2.observe(viewAll);
@@ -398,7 +992,387 @@ console.error('Etsy feed error:',err);
 grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:3rem"><p style="color:var(--text2);margin-bottom:1.5rem">Couldn\'t load listings right now.</p><a href="https://www.etsy.com/shop/'+SHOP+'" class="bo" target="_blank" rel="noopener">Browse the Shop on Etsy</a></div>';
 });
 })();
+
+// ============ TOOLS LOGIC ============
+function toggleTool(btn){
+  const item=btn.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.tool-item').forEach(t=>t.classList.remove('open'));
+  if(!wasOpen){
+    item.classList.add('open');
+    setTimeout(()=>{item.scrollIntoView({behavior:'smooth',block:'start'})},150);
+  }
+}
+
+// PROTEIN
+function calcProtein(){
+  const w=parseFloat(document.getElementById('p-weight').value);
+  const goal=document.querySelector('input[name="p-goal"]:checked').value;
+  if(!w||w<30){alert('Please enter a valid weight');return}
+  let low,high,note;
+  if(goal==='maintain'){low=w*0.8;high=w*1.2;note='For general health and maintenance. The UK reference intake sits at 0.75g per kg of bodyweight, but research suggests slightly above this is optimal for adults who train even occasionally.'}
+  else if(goal==='build'){low=w*1.6;high=w*2.2;note='For building muscle. Research consistently points to 1.6 to 2.2g per kg as the sweet spot, split across 3 to 5 meals. More than this gives no added benefit.'}
+  else if(goal==='lose'){low=w*1.8;high=w*2.4;note='Higher protein while in a calorie deficit preserves muscle and keeps you full. Go to the top of this range if training hard.'}
+  else{low=w*1.2;high=w*1.6;note='Older adults need more protein to counter age-related muscle loss. Splitting across 3 to 4 meals with 25 to 30g each gives the best muscle-building response.'}
+  const target=Math.round((low+high)/2);
+  // UK 2026 supermarket pricing: whey ~3.0p/g (MyProtein 1kg ~£25, 82% protein)
+  // Chicken breast ~3.0p/g (Tesco £6.90/kg, ~23g protein raw per 100g)
+  // Mixed food basket ~3.5p/g (eggs, chicken, milk, Greek yoghurt, tuna)
+  const costWhey=(target*0.030).toFixed(2);
+  const costChicken=(target*0.030).toFixed(2);
+  const costMixed=(target*0.035).toFixed(2);
+  const eggs=Math.round(target/6);
+  document.getElementById('p-grams').textContent=target;
+  document.getElementById('p-range').textContent='Target range: '+Math.round(low)+' to '+Math.round(high)+' g per day';
+  document.getElementById('p-cost-food').textContent='£'+costMixed;
+  document.getElementById('p-cost-whey').textContent='£'+costWhey;
+  document.getElementById('p-eggs').textContent=eggs+' eggs';
+  document.getElementById('p-note').textContent=note;
+  document.getElementById('p-result').classList.add('show');
+}
+
+// CAFFEINE
+let drinks=[];
+function addDrink(){
+  const sel=document.getElementById('c-drink');
+  const time=document.getElementById('c-time').value;
+  const mg=parseInt(sel.value);
+  const name=sel.options[sel.selectedIndex].text.replace(/\s*\(\d+mg\)$/,'');
+  drinks.push({name,mg,time});
+  renderDrinks();
+}
+function removeDrink(i){drinks.splice(i,1);renderDrinks()}
+function resetDrinks(){drinks=[];renderDrinks()}
+function renderDrinks(){
+  const list=document.getElementById('c-drinks');
+  list.innerHTML=drinks.map((d,i)=>'<div class="drink-row"><span>'+d.name+'<span class="dk-time">· '+d.time+'</span></span><span><span class="dk-mg">'+d.mg+' mg</span><button class="rem-btn" onclick="removeDrink('+i+')">×</button></span></div>').join('');
+  const total=drinks.reduce((a,d)=>a+d.mg,0);
+  const pct=Math.min(100,(total/600)*100);
+  const afternoon=drinks.filter(d=>d.time==='Afternoon'||d.time==='Evening').reduce((a,d)=>a+d.mg,0);
+  document.getElementById('c-total').textContent=total;
+  const bar=document.getElementById('c-bar');
+  bar.style.width=pct+'%';
+  let status,note;
+  if(total===0){document.getElementById('c-result').classList.remove('show');return}
+  else if(total<200){status='Well within safe limits';note='You are in the light range. EFSA\'s safe upper limit is 400mg for a healthy adult.';bar.classList.remove('warn')}
+  else if(total<400){status='Moderate intake';note='Still within the 400mg EFSA daily limit for most adults, but you are getting close.';bar.classList.remove('warn')}
+  else if(total<600){status='Over the safe daily limit';note='EFSA\'s upper limit is 400mg per day. Above this, jitters, raised heart rate and poor sleep become more likely.';bar.classList.add('warn')}
+  else{status='Well into excess territory';note='This is significantly over safe guidance. Space doses out and consider cutting back.';bar.classList.add('warn')}
+  if(afternoon>=100){note+=' Heads up: you have had '+afternoon+'mg from midday onwards. Caffeine has a half-life of around 5 hours, so this will likely affect tonight\'s sleep.'}
+  document.getElementById('c-status').textContent=status;
+  document.getElementById('c-note').textContent=note;
+  document.getElementById('c-result').classList.add('show');
+}
+
+// CPG
+function calcCPG(){
+  const price=parseFloat(document.getElementById('cpg-price').value);
+  const protein=parseFloat(document.getElementById('cpg-protein').value);
+  const servings=parseInt(document.getElementById('cpg-servings').value)||1;
+  const name=document.getElementById('cpg-name').value.trim();
+  if(!price||!protein){alert('Please enter a valid price and protein amount');return}
+  const totalProtein=protein*servings;
+  const costPerGram=(price/totalProtein)*100;
+  const costPer30g=(30/totalProtein)*price;
+  document.getElementById('cpg-value').textContent=costPerGram.toFixed(1);
+  document.getElementById('cpg-total-p').textContent=totalProtein.toFixed(0)+'g';
+  document.getElementById('cpg-per-serve').textContent='£'+costPer30g.toFixed(2);
+  let verdict,benchmark;
+  if(costPerGram<2){verdict=name?name+': genuinely good value':'Genuinely good value';benchmark='Under 2p per gram is excellent. Whey concentrate in bulk, chicken breast, eggs and milk all hit this range. You are paying for protein, not marketing.'}
+  else if(costPerGram<4){verdict=name?name+': fair value':'Fair value';benchmark='Between 2p and 4p per gram is fair. Most supermarket protein sources, decent whey blends and lean meats sit here.'}
+  else if(costPerGram<8){verdict=name?name+': you are paying a premium':'You are paying a premium';benchmark='4p to 8p per gram means you are paying for convenience or branding. Protein bars, ready-to-drink shakes and premium powders live here. Ask yourself if the convenience is worth double the cost.'}
+  else{verdict=name?name+': overpriced':'Overpriced';benchmark='Over 8p per gram is scam territory. You are paying for packaging and marketing, not protein. You can get the same grams from eggs or milk for a fifth of the price.'}
+  document.getElementById('cpg-verdict').textContent=verdict;
+  document.getElementById('cpg-benchmark').textContent=benchmark;
+  document.getElementById('cpg-result').classList.add('show');
+}
+
+// STACK
+const supplements=[
+  {id:'whey',name:'Whey Protein'},{id:'casein',name:'Casein'},{id:'collagen',name:'Collagen'},
+  {id:'creatine',name:'Creatine'},{id:'preworkout',name:'Pre-Workout'},{id:'caffeine',name:'Caffeine Pills'},
+  {id:'bcaa',name:'BCAAs'},{id:'eaa',name:'EAAs'},{id:'multi',name:'Multivitamin'},
+  {id:'d3',name:'Vitamin D3'},{id:'b12',name:'Vitamin B12'},{id:'c',name:'Vitamin C'},
+  {id:'iron',name:'Iron'},{id:'calcium',name:'Calcium'},{id:'magnesium',name:'Magnesium'},
+  {id:'zinc',name:'Zinc'},{id:'omega3',name:'Omega-3 / Fish Oil'},{id:'probiotic',name:'Probiotic'},
+  {id:'ashwagandha',name:'Ashwagandha'},{id:'greens',name:'Greens Powder'},
+  {id:'beta',name:'Beta-Alanine'},{id:'citrulline',name:'L-Citrulline'}
+];
+function renderStackChecks(){
+  document.getElementById('stack-checks').innerHTML=supplements.map(s=>'<div class="stack-item"><input type="checkbox" id="s-'+s.id+'"><label for="s-'+s.id+'">'+s.name+'</label></div>').join('');
+}
+renderStackChecks();
+
+function checkStack(){
+  const picked=supplements.filter(s=>document.getElementById('s-'+s.id).checked).map(s=>s.id);
+  const findings=[];
+  if(picked.length===0){alert('Tick at least one supplement');return}
+  if(picked.includes('whey')&&picked.includes('bcaa'))findings.push({type:'issue',text:'<strong>BCAAs are redundant if you take whey.</strong> Whey already contains all the BCAAs you need. Save your money.'});
+  if(picked.includes('whey')&&picked.includes('eaa'))findings.push({type:'issue',text:'<strong>EAAs are redundant if you take whey.</strong> Whey is a complete protein with all essential amino acids. Drop the EAAs.'});
+  if(picked.includes('collagen')&&!picked.includes('whey')&&!picked.includes('casein'))findings.push({type:'issue',text:'<strong>Collagen is not a complete protein.</strong> It is low in essential amino acids, especially leucine. If this is your only protein source, you need a proper one alongside it.'});
+  if(picked.includes('preworkout')&&picked.includes('caffeine'))findings.push({type:'issue',text:'<strong>Pre-workout plus caffeine pills is risky.</strong> Most pre-workouts contain 150 to 300mg caffeine already. Stacking more can push you well over the 400mg daily limit.'});
+  if(picked.includes('preworkout')&&picked.includes('beta'))findings.push({type:'info',text:'<strong>Your pre-workout probably contains beta-alanine already.</strong> Check the label. Doubling up just increases the tingling, not the benefit.'});
+  if(picked.includes('preworkout')&&picked.includes('citrulline'))findings.push({type:'info',text:'<strong>Most pre-workouts contain citrulline.</strong> Stacking extra is usually wasteful unless your pre-workout is underdosed (under 6g).'});
+  if(picked.includes('iron')&&picked.includes('calcium'))findings.push({type:'issue',text:'<strong>Calcium blocks iron absorption.</strong> Take them at least 2 hours apart. Iron is best on an empty stomach with vitamin C.'});
+  if(picked.includes('iron')&&picked.includes('c'))findings.push({type:'good',text:'<strong>Vitamin C boosts iron absorption.</strong> Take them together for better uptake.'});
+  if(picked.includes('zinc')&&picked.includes('calcium'))findings.push({type:'issue',text:'<strong>Calcium and zinc compete for absorption.</strong> Space them out by a few hours.'});
+  if(picked.includes('d3')&&!picked.includes('omega3')&&!picked.includes('multi'))findings.push({type:'info',text:'<strong>Vitamin D3 is fat-soluble.</strong> Take it with a meal containing fat (or with your omega-3) for proper absorption.'});
+  if(picked.includes('multi')&&picked.includes('d3'))findings.push({type:'info',text:'<strong>Check your multivitamin already contains D3.</strong> Most UK multis contain 10 to 25µg. Stacking is usually fine but worth knowing your total dose.'});
+  if(picked.includes('multi')&&picked.includes('b12'))findings.push({type:'info',text:'<strong>Most multivitamins contain B12.</strong> A separate B12 is only needed if you are vegan, over 50, or have a diagnosed deficiency.'});
+  if(picked.includes('magnesium'))findings.push({type:'good',text:'<strong>Magnesium works well taken at night.</strong> Glycinate or bisglycinate forms are best for sleep. Avoid oxide (poorly absorbed).'});
+  if(picked.includes('creatine'))findings.push({type:'good',text:'<strong>Creatine timing does not matter.</strong> Take it whenever suits. The key is 3 to 5g daily, every day. Monohydrate is the only form with real evidence behind it.'});
+  if(picked.includes('ashwagandha'))findings.push({type:'info',text:'<strong>Ashwagandha works best taken consistently for 8 weeks or more.</strong> Taking it occasionally does very little. Look for KSM-66 or Sensoril branded extracts for standardised dosing.'});
+  if(picked.includes('greens')&&picked.includes('multi'))findings.push({type:'issue',text:'<strong>Greens powders plus a multivitamin is usually overkill.</strong> Most greens powders are just multivitamins with fibre and marketing. Pick one.'});
+  if(findings.length===0)findings.push({type:'good',text:'Your stack looks clean. No clashes, no redundancies spotted from what you ticked.'});
+  document.getElementById('stack-findings').innerHTML=findings.map(f=>'<div class="finding '+f.type+'">'+f.text+'</div>').join('');
+  document.getElementById('stack-result').classList.add('show');
+}
+
+// HYDRATION
+function calcHydration(){
+  const w=parseFloat(document.getElementById('h-weight').value);
+  const train=parseFloat(document.getElementById('h-training').value)||0;
+  const climate=document.querySelector('input[name="h-climate"]:checked').value;
+  if(!w||w<30){alert('Please enter a valid weight');return}
+  const base=w*0.033;
+  const trainAdd=(train/60)*0.6;
+  let climateAdd=0;
+  if(climate==='warm')climateAdd=0.3;
+  if(climate==='hot')climateAdd=0.7;
+  const total=base+trainAdd+climateAdd;
+  document.getElementById('h-litres').textContent=total.toFixed(1);
+  document.getElementById('h-base').textContent=base.toFixed(1)+'L';
+  document.getElementById('h-train').textContent='+'+trainAdd.toFixed(1)+'L';
+  document.getElementById('h-climate-add').textContent='+'+climateAdd.toFixed(1)+'L';
+  let sub;
+  if(total<2)sub='Modest need. Spread sips through the day.';
+  else if(total<3)sub='Standard adult intake. Around a large bottle and a half.';
+  else if(total<4)sub='Higher end. Keep a bottle at your desk and sip consistently.';
+  else sub='Serious hydration territory. Add electrolytes, especially if training in the heat.';
+  document.getElementById('h-sub').textContent=sub;
+  document.getElementById('h-result').classList.add('show');
+}
+
+// TDEE & MACROS
+function calcTDEE(){
+  const age=parseFloat(document.getElementById('t-age').value);
+  const sex=document.getElementById('t-sex').value;
+  const w=parseFloat(document.getElementById('t-weight').value);
+  const h=parseFloat(document.getElementById('t-height').value);
+  const act=parseFloat(document.getElementById('t-activity').value);
+  const goal=document.querySelector('input[name="t-goal"]:checked').value;
+  if(!age||!w||!h){alert('Please fill in your age, weight and height');return}
+  // Mifflin-St Jeor
+  let bmr;
+  if(sex==='male')bmr=(10*w)+(6.25*h)-(5*age)+5;
+  else bmr=(10*w)+(6.25*h)-(5*age)-161;
+  const tdee=bmr*act;
+  let cals,pMult,fPct,sub,note;
+  if(goal==='cut'){
+    cals=Math.round(tdee*0.8); // 20% deficit
+    pMult=2.0; fPct=0.25;
+    sub='20% deficit for steady fat loss (around 0.5kg per week)';
+    note='Sustainable fat loss sits at 0.5 to 1 percent of bodyweight per week. Aggressive cuts below 75 percent of TDEE usually backfire with muscle loss and metabolic slowdown.';
+  } else if(goal==='bulk'){
+    cals=Math.round(tdee*1.1); // 10% surplus
+    pMult=1.8; fPct=0.25;
+    sub='10% surplus for lean muscle gain (around 0.25kg per week)';
+    note='A small surplus builds muscle without excess fat gain. Gaining more than 0.5kg per week past the beginner stage means most of the extra weight is fat, not muscle.';
+  } else {
+    cals=Math.round(tdee);
+    pMult=1.6; fPct=0.3;
+    sub='Calories to maintain your current weight';
+    note='Your maintenance figure is an estimate. Real-world maintenance varies by 10 to 15 percent. Weigh yourself weekly for 2 to 3 weeks and adjust if needed.';
+  }
+  const protein=Math.round(w*pMult);
+  const fat=Math.round((cals*fPct)/9);
+  const carbs=Math.round((cals-(protein*4)-(fat*9))/4);
+  document.getElementById('t-cals').textContent=cals;
+  document.getElementById('t-sub').textContent=sub;
+  document.getElementById('t-p').textContent=protein+'g';
+  document.getElementById('t-c').textContent=carbs+'g';
+  document.getElementById('t-f').textContent=fat+'g';
+  document.getElementById('t-note').textContent=note;
+  document.getElementById('t-result').classList.add('show');
+}
+
+// PRE-WORKOUT DOSE CHECKER
+function checkPreWorkout(){
+  const caf=parseFloat(document.getElementById('pw-caffeine').value)||0;
+  const cit=parseFloat(document.getElementById('pw-citrulline').value)||0;
+  const beta=parseFloat(document.getElementById('pw-beta').value)||0;
+  const cre=parseFloat(document.getElementById('pw-creatine').value)||0;
+  const bet=parseFloat(document.getElementById('pw-betaine').value)||0;
+  const tyr=parseFloat(document.getElementById('pw-tyrosine').value)||0;
+  const prop=document.querySelector('input[name="pw-prop"]:checked').value;
+
+  if(caf===0&&cit===0&&beta===0&&cre===0&&bet===0&&tyr===0){alert('Enter at least one ingredient to analyse');return}
+
+  const findings=[];
+  let score=0,ingredients=0;
+
+  // Caffeine: effective 150-400mg
+  if(caf>0){
+    ingredients++;
+    if(caf<100){findings.push({type:'issue',text:'<strong>Caffeine underdosed at '+caf+'mg.</strong> Research shows 3-6mg per kg bodyweight for a performance effect. Most adults need 150mg minimum.'});score+=3}
+    else if(caf>400){findings.push({type:'issue',text:'<strong>Caffeine very high at '+caf+'mg.</strong> This is at or above the EFSA daily safe limit in one serving. Risky if you have other caffeine sources.'});score+=7}
+    else if(caf>=150&&caf<=300){findings.push({type:'good',text:'<strong>Caffeine well-dosed at '+caf+'mg.</strong> Within the proven performance range.'});score+=10}
+    else{findings.push({type:'info',text:'<strong>Caffeine at '+caf+'mg.</strong> Acceptable dose but on the edge of the effective range.'});score+=7}
+  }
+  // Citrulline: 6-8g effective
+  if(cit>0){
+    ingredients++;
+    if(cit<6){findings.push({type:'issue',text:'<strong>L-Citrulline underdosed at '+cit+'g.</strong> Clinical research uses 6-8g for pump and performance. Under this is essentially window dressing.'});score+=3}
+    else if(cit>=6){findings.push({type:'good',text:'<strong>L-Citrulline properly dosed at '+cit+'g.</strong> Hits the clinical threshold for blood flow and pump benefits.'});score+=10}
+  }
+  // Beta-alanine: 3.2-6.4g
+  if(beta>0){
+    ingredients++;
+    if(beta<3){findings.push({type:'issue',text:'<strong>Beta-alanine underdosed at '+beta+'g.</strong> The ISSN position stand requires 3.2g daily minimum for carnosine buffering. Under this does nothing but make you tingle.'});score+=3}
+    else if(beta>=3){findings.push({type:'good',text:'<strong>Beta-alanine properly dosed at '+beta+'g.</strong> Hits the 3.2g clinical threshold.'});score+=10}
+  }
+  // Creatine: 3-5g
+  if(cre>0){
+    ingredients++;
+    if(cre<3){findings.push({type:'issue',text:'<strong>Creatine underdosed at '+cre+'g.</strong> Research consistently shows 3-5g daily is needed. Token doses in pre-workouts are marketing, not function.'});score+=3}
+    else{findings.push({type:'good',text:'<strong>Creatine properly dosed at '+cre+'g.</strong> Meets the research-backed daily requirement.'});score+=10}
+  }
+  // Betaine: 2.5g
+  if(bet>0){
+    ingredients++;
+    if(bet<2.5){findings.push({type:'issue',text:'<strong>Betaine underdosed at '+bet+'g.</strong> Studies showing power output benefits use 2.5g daily minimum.'});score+=3}
+    else{findings.push({type:'good',text:'<strong>Betaine properly dosed at '+bet+'g.</strong> Meets clinical research dose.'});score+=10}
+  }
+  // Tyrosine: 500mg-2g (for focus)
+  if(tyr>0){
+    ingredients++;
+    if(tyr<0.5){findings.push({type:'issue',text:'<strong>L-Tyrosine underdosed at '+tyr+'g.</strong> Effective doses for focus and stress performance start at 500mg.'});score+=3}
+    else{findings.push({type:'good',text:'<strong>L-Tyrosine at '+tyr+'g.</strong> Within the research range for focus under stress.'});score+=10}
+  }
+  // Proprietary blend penalty
+  if(prop==='yes'){
+    findings.push({type:'issue',text:'<strong>Proprietary blend detected.</strong> This is an instant red flag. Manufacturers hide individual doses behind a single total, usually to mask underdosing. Anything honest lists exact amounts.'});
+    score=Math.round(score*0.6);
+  }
+
+  const finalScore=ingredients>0?Math.round((score/(ingredients*10))*100):0;
+  let verdict;
+  if(finalScore>=80)verdict='Properly dosed. This is what a clinically formulated pre-workout looks like.';
+  else if(finalScore>=60)verdict='Decent formula with room for improvement. Some ingredients hit research doses, others are underdosed.';
+  else if(finalScore>=40)verdict='Mostly underdosed. You are paying for ingredients that are present but not at effective amounts.';
+  else verdict='Largely window dressing. Most of what is in this product will not do what the marketing claims.';
+
+  document.getElementById('pw-score').textContent=finalScore;
+  document.getElementById('pw-verdict').textContent=verdict;
+  document.getElementById('pw-findings').innerHTML=findings.map(f=>'<div class="finding '+f.type+'">'+f.text+'</div>').join('');
+  document.getElementById('pw-result').classList.add('show');
+}
+
+// SUPPLEMENT SPEND AUDIT
+// Evidence tiers: strong = well-proven, moderate = some evidence, weak = minimal/hype
+const spendItems=[
+  {id:'whey',name:'Whey Protein',tier:'strong'},
+  {id:'creatine',name:'Creatine Monohydrate',tier:'strong'},
+  {id:'caffeine',name:'Caffeine',tier:'strong'},
+  {id:'d3',name:'Vitamin D3',tier:'strong'},
+  {id:'omega3',name:'Omega-3 / Fish Oil',tier:'strong'},
+  {id:'magnesium',name:'Magnesium',tier:'moderate'},
+  {id:'b12',name:'Vitamin B12 (if vegan)',tier:'moderate'},
+  {id:'iron',name:'Iron (if deficient)',tier:'moderate'},
+  {id:'beta',name:'Beta-Alanine',tier:'moderate'},
+  {id:'citrulline',name:'L-Citrulline',tier:'moderate'},
+  {id:'ashwagandha',name:'Ashwagandha',tier:'moderate'},
+  {id:'casein',name:'Casein Protein',tier:'moderate'},
+  {id:'probiotic',name:'Probiotic',tier:'weak'},
+  {id:'multi',name:'Multivitamin',tier:'weak'},
+  {id:'bcaa',name:'BCAAs',tier:'weak'},
+  {id:'eaa',name:'EAAs',tier:'weak'},
+  {id:'collagen',name:'Collagen',tier:'weak'},
+  {id:'greens',name:'Greens Powder',tier:'weak'},
+  {id:'testBoost',name:'Test Booster',tier:'weak'},
+  {id:'fatBurner',name:'Fat Burner',tier:'weak'}
+];
+
+function renderSpendGrid(){
+  document.getElementById('spend-grid').innerHTML=spendItems.map(s=>'<div class="spend-row '+s.tier+'"><span class="sp-name">'+s.name+'</span><input type="number" id="sp-'+s.id+'" min="0" step="0.5" placeholder="£0"></div>').join('');
+}
+renderSpendGrid();
+
+function auditSpend(){
+  let total=0,strong=0,moderate=0,weak=0;
+  const weakItems=[],strongItems=[];
+  spendItems.forEach(s=>{
+    const val=parseFloat(document.getElementById('sp-'+s.id).value)||0;
+    if(val>0){
+      total+=val;
+      if(s.tier==='strong'){strong+=val;strongItems.push(s.name)}
+      else if(s.tier==='moderate')moderate+=val;
+      else{weak+=val;weakItems.push(s.name+' (£'+val.toFixed(2)+')')}
+    }
+  });
+  if(total===0){alert('Enter the monthly cost for at least one supplement');return}
+
+  document.getElementById('spend-total').textContent=total.toFixed(2);
+  document.getElementById('spend-year').textContent='£'+Math.round(total*12);
+  document.getElementById('spend-strong').textContent='£'+strong.toFixed(2);
+  document.getElementById('spend-weak').textContent='£'+(weak+moderate*0.3).toFixed(2);
+
+  const findings=[];
+  let sub;
+  if(total<30)sub='Modest spend. If it is mostly evidence-backed, you are doing it right.';
+  else if(total<60)sub='Average spend for a keen gym-goer. Watch the balance between proven and hyped items.';
+  else if(total<120)sub='High spend. Most people at this level are paying for at least one or two things that do not earn their place.';
+  else sub='You are spending serious money. Audit hard, because supplement brands love customers like you.';
+  document.getElementById('spend-sub').textContent=sub;
+
+  if(weak>total*0.3){
+    findings.push({type:'issue',text:'<strong>Over 30 percent of your spend goes on products with weak or no evidence.</strong> This is where brands make their margin. Cutting these alone could save you £'+Math.round(weak*12)+' per year.'});
+  }
+  if(weakItems.length>0){
+    findings.push({type:'info',text:'<strong>Low-evidence items in your stack:</strong> '+weakItems.join(', ')+'. These are not all useless, but the research does not support the cost for most people.'});
+  }
+  if(strong>0&&weak===0){
+    findings.push({type:'good',text:'<strong>Your spend is concentrated on evidence-backed supplements.</strong> This is how supplementation should work. You are paying for function, not marketing.'});
+  }
+  if(total>100){
+    findings.push({type:'info',text:'<strong>At £'+Math.round(total)+' per month, you could cover high-quality whey, creatine, vitamin D3 and fish oil with plenty left over.</strong> Anything on top of those four needs a specific reason to justify its place.'});
+  }
+  if(findings.length===0){
+    findings.push({type:'good',text:'Balanced stack. No obvious waste spotted from what you have entered.'});
+  }
+  document.getElementById('spend-findings').innerHTML=findings.map(f=>'<div class="finding '+f.type+'">'+f.text+'</div>').join('');
+  document.getElementById('spend-result').classList.add('show');
+}
+
+// HOW LONG WILL IT LAST
+function calcDuration(){
+  const price=parseFloat(document.getElementById('d-price').value);
+  const size=parseFloat(document.getElementById('d-size').value);
+  const dose=parseFloat(document.getElementById('d-dose').value);
+  const name=document.getElementById('d-name').value.trim();
+  if(!price||!size||!dose){alert('Please fill in price, size and daily dose');return}
+  const doses=Math.floor(size/dose);
+  const days=doses;
+  const cpd=price/days;
+  const cpm=cpd*30;
+  document.getElementById('d-days').textContent=days;
+  document.getElementById('d-doses').textContent=doses;
+  document.getElementById('d-cpd').textContent='£'+cpd.toFixed(2);
+  document.getElementById('d-cpm').textContent='£'+cpm.toFixed(2);
+  let sub,note;
+  if(days<30)sub='Under a month. Small tubs are usually the worst value.';
+  else if(days<60)sub='About a month\'s supply.';
+  else if(days<120)sub='Two to four months. Typical sweet spot for value.';
+  else sub='Four months or more. Usually the best value per serve.';
+  if(cpd<0.10)note=(name?name+' works out at ':'This works out at ')+'under 10p per day. Genuinely excellent value.';
+  else if(cpd<0.30)note=(name?name+' is ':'')+'fair value at this cost per day.';
+  else if(cpd<0.70)note='Getting expensive. Worth checking whether a bigger tub or different brand gives you more for your money.';
+  else note='This is costly per day. Check if the dose you are taking matches what research supports, because you may be overpaying for a luxury-priced product.';
+  document.getElementById('d-sub').textContent=sub;
+  document.getElementById('d-note').textContent=note;
+  document.getElementById('d-result').classList.add('show');
+}
 </script>
-  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d78de7a8f0994cada374164726ee4b12"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d78de7a8f0994cada374164726ee4b12"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
